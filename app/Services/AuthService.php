@@ -9,6 +9,6 @@ class AuthService
 {
     public function login($data)
     {
-        //
+        dd($data);
     }
 }

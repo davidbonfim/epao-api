@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Facades\App\Services\AuthService;
 use Illuminate\Http\Request;
+use Facades\App\Services\AuthService;
+use App\Http\Requests\LoginUserRequest;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login(LoginUserRequest $request)
     {
-        $response = AuthService::login($request->all());
+        $response = AuthService::login($request->validated());
         return $response;
     }
 }
