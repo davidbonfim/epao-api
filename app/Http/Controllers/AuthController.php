@@ -13,4 +13,9 @@ class AuthController extends Controller
         $response = AuthService::login($request->validated());
         return $response;
     }
+    public function register(Request $request)
+    {
+        $response = AuthService::register($request->validated());
+        return $response;
+    }
 }
