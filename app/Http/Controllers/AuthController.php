@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthRequest;
 use Facades\App\Services\AuthService;
-use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserRegisterResource;
 
 class AuthController extends Controller
 {
-    public function login(LoginUserRequest $request)
+    public function login(AuthRequest $request)
     {
         $response = AuthService::login($request->validated());
         return $response;
     }
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $response = AuthService::register($request->validated());
-        return $response;
+        $user = AuthService::register($request->validated());
+        return new UserRegisterResource($user);
     }
 }

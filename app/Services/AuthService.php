@@ -9,18 +9,27 @@ use App\Models\User;
  */
 class AuthService
 {
+    /**
+     * Login user 
+     * @param $data
+     */
     public function login($data)
     {
         dd($data);
     }
     
+    /**
+     * Register new user
+     * @param $data
+     */
     public function register($data)
     {
-        User::create([
+        $user = User::create([
             'name' => $data['name'],
-            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => encrypt($data['password']),
+            'phone' => strval($data['phone']),
         ]);
+        return $user;
     }
 }

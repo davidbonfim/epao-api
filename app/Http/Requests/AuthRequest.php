@@ -36,13 +36,12 @@ class AuthRequest extends Request
      */
     public function messages()
     {
-        return[
+        return [
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.string' => 'O campo nome deve ser uma string.',
             'email.required' => 'O campo e-mail é obrigatório.',
             'email.string' => 'O campo e-mail deve ser uma string.',
-            'email.email' => 'O campo e-mail deve ser um email válido.',
-            'password.required' => 'O campo senha é obrigatório.',
-            'password.string' => 'O campo senha deve ser uma string.',
-            'password.min' => 'O campo senha deve ter no mínimo 8 caracteres.',
+            'email.email' => 'O campo e-mail deve ser um e-mail válido.',
         ];
     }
 }
