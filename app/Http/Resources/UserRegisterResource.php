@@ -18,9 +18,8 @@ class UserRegisterResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'phone' => $this->status,
-            'has_membership' => $this->hasMembership,
-            'pending_membership' => $this->hasPendingMembership,
+            'phone' => $this->phone,
+            'updated' => $this->updated_at->format('d/m/Y, H:i:s'),
         ];
     }
 }
