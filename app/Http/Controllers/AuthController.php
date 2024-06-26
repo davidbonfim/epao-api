@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function login(AuthRequest $request)
     {
-        $response = AuthService::login($request->validated());
+        $response = AuthService::login($request);
 
         return $this->ok([
             'token' => $response['token'],
