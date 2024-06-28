@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\ApiResponse;
+use App\Traits\ApiException;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
 use Facades\App\Services\AuthService;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserRegisterResource;
-use App\Traits\ApiResponse;
-use App\Traits\ApiException;
 
 class AuthController extends Controller
 {
@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function login(AuthRequest $request)
     {
-        $response = AuthService::login($request);
+        $response = AuthService::login($request->validated());
 
         return $this->ok([
             'token' => $response['token'],

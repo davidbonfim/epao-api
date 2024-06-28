@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRequest extends Request
+class AuthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,11 +37,11 @@ class AuthRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => 'O campo nome é obrigatório.',
-            'name.string' => 'O campo nome deve ser uma string.',
             'email.required' => 'O campo e-mail é obrigatório.',
             'email.string' => 'O campo e-mail deve ser uma string.',
             'email.email' => 'O campo e-mail deve ser um e-mail válido.',
+            'password.required' => 'O campo nome é obrigatório.',
+            'password.string' => 'O campo nome deve ser uma string.',
         ];
     }
 }

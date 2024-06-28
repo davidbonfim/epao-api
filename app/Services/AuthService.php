@@ -20,6 +20,7 @@ class AuthService
      */
     public function login(array $data): array
     {
+        dd($data);
         if (!Auth::attempt($data)) {
             $user = User::where('email', $data['email'])->first();
 
