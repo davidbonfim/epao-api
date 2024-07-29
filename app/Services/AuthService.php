@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Traits\ApiException;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class AuthService.
@@ -20,7 +21,6 @@ class AuthService
      */
     public function login(array $data): array
     {
-        dd($data);
         if (!Auth::attempt($data)) {
             $user = User::where('email', $data['email'])->first();
 
