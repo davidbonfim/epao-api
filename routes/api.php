@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EpaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 Route::prefix('v1')->group(function () {
 
     Route::controller(AuthController::class)->group(
@@ -30,5 +29,19 @@ Route::prefix('v1')->group(function () {
             );
         }
     );
+
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::controller(EpaoController::class)->group(
+            function () {
+                Route::prefix('epao')->group(
+                    function () {
+                        Route::post('/', 'create');
+                    }
+                );
+            }
+        );
+    });
 });
+
+
 
