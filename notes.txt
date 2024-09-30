@@ -1,0 +1,11 @@
+Features:
+
+Crud EPAO 
+C ()
+R ()
+U ()
+D ()
+
+Donation Checkout
+-Fatoripay
+-Cripto
