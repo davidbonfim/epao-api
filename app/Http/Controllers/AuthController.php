@@ -28,4 +28,10 @@ class AuthController extends Controller
         $user = AuthService::register($request->validated());
         return $this->created(new UserRegisterResource($user));
     }
+
+    public function logout(Request $request)
+    {
+        $user = AuthService::logout($request->user());
+        return $this->ok("Usuário deslogado com sucesso.");
+    }
 }

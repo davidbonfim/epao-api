@@ -60,6 +60,15 @@ class AuthService
         return $user;
     }
 
+    /**
+     * Logout user
+     */
+    public function logout(User $user)
+    {
+        $user = User::where('email', $user['email'])->first();
+        $user->tokens()->delete();
+        return $user;
+    }
 
     private function verifyUniqueEmail(array $data, User $user = null): bool
     {
