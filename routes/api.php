@@ -25,12 +25,24 @@ Route::prefix('v1')->group(function () {
                 function () {
                     Route::post('/login', 'login');
                     Route::post('/register', 'register');
+                    Route::post('/logout', 'logout');
                 }
             );
         }
     );
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
+
+        Route::controller(AuthController::class)->group(
+            function () {
+                Route::prefix('auth')->group(
+                    function () {
+                        Route::post('/logout', 'logout');
+                    }
+                );
+            }
+        );
+
         Route::controller(EpaoController::class)->group(
             function () {
                 Route::prefix('epao')->group(
@@ -41,6 +53,16 @@ Route::prefix('v1')->group(function () {
             }
         );
     });
+
+    Route::controller(CheckoutController::class)->group(
+        function () {
+            Route::prefix('checkout')->group(
+                function () {
+                    Route::post('/', 'create');
+                }
+            );
+        }
+    );
 });
 
 
